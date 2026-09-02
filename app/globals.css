@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #F0EAE2;
+  color: #2E2521;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.container-px {
+  @apply px-6 sm:px-8 lg:px-12;
+}
+
+.section {
+  @apply py-20 sm:py-28;
+}
+
+.eyebrow {
+  @apply text-sm font-medium text-apricot;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-full bg-apricot px-6 py-3 text-sm font-medium text-linen transition-colors hover:bg-apricot-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-charcoal;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center rounded-full border border-charcoal/20 bg-transparent px-6 py-3 text-sm font-medium text-charcoal transition-colors hover:border-charcoal/40 hover:bg-white/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-charcoal;
+}
+
+.card {
+  @apply rounded-2xl border border-taupe/60 bg-white p-6 shadow-[0_1px_2px_rgba(46,37,33,0.04)];
+}
