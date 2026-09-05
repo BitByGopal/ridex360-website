@@ -12,6 +12,7 @@ import AboutCompany from "@/components/AboutCompany";
 import CTA from "@/components/CTA";
 import DemoSection from "@/components/DemoSection";
 import Footer from "@/components/Footer";
+import FeatureSlideshow from "@/components/FeatureSlideshow";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <Hero />
       <ProblemSection />
       <SolutionSection />
+      <FeatureSlideshow />
       <Industries />
       <PlatformEcosystem />
       <Features />
