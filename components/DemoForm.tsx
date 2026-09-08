@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import { ChevronDown } from "lucide-react";
 
 type FormState = {
   orgName: string;
@@ -45,6 +46,7 @@ export default function DemoForm() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [showMore, setShowMore] = useState(false);
 
   function update<K extends keyof FormState>(key: K, value: string) {
     setForm((f) => ({ ...f, [key]: value }));
@@ -59,11 +61,6 @@ export default function DemoForm() {
       next.email = "Enter a valid organization email address.";
     if (!/^\+?[0-9]{10,15}$/.test(form.phone.replace(/[\s\-()]/g, "")))
       next.phone = "Enter a valid mobile number (10-15 digits).";
-    if (!form.city.trim()) next.city = "City is required.";
-    if (!form.vehicles || Number(form.vehicles) <= 0)
-      next.vehicles = "Enter the number of vehicles.";
-    if (!form.passengers || Number(form.passengers) <= 0)
-      next.passengers = "Enter the approximate number of passengers.";
     setErrors(next);
     return Object.keys(next).length === 0;
   }
@@ -152,44 +149,58 @@ export default function DemoForm() {
         value={form.phone}
         onChange={(v) => update("phone", v)}
         error={errors.phone}
-      />
-
-      <Field
-        label="City"
-        value={form.city}
-        onChange={(v) => update("city", v)}
-        error={errors.city}
-      />
-
-      <Field
-        label="Number of Vehicles"
-        type="number"
-        value={form.vehicles}
-        onChange={(v) => update("vehicles", v)}
-        error={errors.vehicles}
-      />
-
-      <Field
-        label="Approx. Number of Passengers"
-        type="number"
-        value={form.passengers}
-        onChange={(v) => update("passengers", v)}
-        error={errors.passengers}
-      />
-
-      <Field
-        label="Current Transportation System"
-        value={form.currentSystem}
-        onChange={(v) => update("currentSystem", v)}
         className="sm:col-span-2"
       />
 
-      <TextAreaField
-        label="What would you like to improve?"
-        value={form.improve}
-        onChange={(v) => update("improve", v)}
-        className="sm:col-span-2"
-      />
+      <button
+        type="button"
+        onClick={() => setShowMore((v) => !v)}
+        aria-expanded={showMore}
+        className="flex items-center gap-1.5 text-sm font-medium text-apricot sm:col-span-2"
+      >
+        <ChevronDown
+          size={16}
+          className={`transition-transform ${showMore ? "rotate-180" : ""}`}
+        />
+        {showMore ? "Hide extra details" : "Add more details (optional)"}
+      </button>
+
+      {showMore && (
+        <>
+          <Field
+            label="City"
+            value={form.city}
+            onChange={(v) => update("city", v)}
+          />
+
+          <Field
+            label="Number of Vehicles"
+            type="number"
+            value={form.vehicles}
+            onChange={(v) => update("vehicles", v)}
+          />
+
+          <Field
+            label="Approx. Number of Passengers"
+            type="number"
+            value={form.passengers}
+            onChange={(v) => update("passengers", v)}
+          />
+
+          <Field
+            label="Current Transportation System"
+            value={form.currentSystem}
+            onChange={(v) => update("currentSystem", v)}
+          />
+
+          <TextAreaField
+            label="What would you like to improve?"
+            value={form.improve}
+            onChange={(v) => update("improve", v)}
+            className="sm:col-span-2"
+          />
+        </>
+      )}
 
       {submitError && (
         <p className="text-sm text-red-500 sm:col-span-2">{submitError}</p>
@@ -202,6 +213,9 @@ export default function DemoForm() {
       >
         {submitting ? "Submitting..." : "Request a Demo"}
       </button>
+      <p className="text-center text-xs text-charcoal/50 sm:col-span-2">
+        No commitment — just a conversation.
+      </p>
     </form>
   );
 }

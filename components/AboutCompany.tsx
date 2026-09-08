@@ -17,6 +17,15 @@ export default function AboutCompany() {
             To make everyday transportation safer, smarter and easier to
             manage.
           </p>
+
+          <div className="mt-6 rounded-xl border-l-2 border-apricot bg-linen/60 py-3 pl-4 text-sm italic text-charcoal/70">
+            &quot;We&apos;re building RideX360 because we&apos;ve seen
+            firsthand how much manual effort goes into keeping transportation
+            safe and visible — this platform is our answer to that.&quot;
+            <span className="mt-2 block not-italic font-medium text-charcoal">
+              — Founder, RideX360
+            </span>
+          </div>
         </div>
       </div>
     </section>

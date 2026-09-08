@@ -11,6 +11,7 @@ import ProductShowcase from "@/components/ProductShowcase";
 import HowItWorks from "@/components/HowItWorks";
 import AboutCompany from "@/components/AboutCompany";
 import CTA from "@/components/CTA";
+import FAQSection from "@/components/FAQSection";
 import DemoSection from "@/components/DemoSection";
 import Footer from "@/components/Footer";
 
@@ -30,6 +31,7 @@ export default function Home() {
       <HowItWorks />
       <AboutCompany />
       <CTA />
+      <FAQSection />
       <DemoSection />
       <Footer />
     </main>
