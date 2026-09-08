@@ -3,11 +3,9 @@ import Hero from "@/components/Hero";
 import ProblemSection from "@/components/ProblemSection";
 import SolutionSection from "@/components/SolutionSection";
 import FeatureSlideshow from "@/components/FeatureSlideshow";
-import LiveRouteSandbox from "@/components/LiveRouteSandbox";
 import Industries from "@/components/Industries";
 import PlatformEcosystem from "@/components/PlatformEcosystem";
 import Features from "@/components/Features";
-import FollowTheBusStory from "@/components/FollowTheBusStory";
 import SafetySection from "@/components/SafetySection";
 import ProductShowcase from "@/components/ProductShowcase";
 import HowItWorks from "@/components/HowItWorks";
@@ -24,11 +22,9 @@ export default function Home() {
       <ProblemSection />
       <SolutionSection />
       <FeatureSlideshow />
-      <LiveRouteSandbox />
       <Industries />
       <PlatformEcosystem />
       <Features />
-      <FollowTheBusStory />
       <SafetySection />
       <ProductShowcase />
       <HowItWorks />
