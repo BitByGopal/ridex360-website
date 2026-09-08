@@ -23,7 +23,7 @@ export default function DemoSection() {
       <div className="mx-auto mt-8 flex max-w-2xl flex-wrap items-center justify-center gap-x-8 gap-y-3">
         {steps.map((s) => (
           <div key={s.n} className="flex items-center gap-2 text-sm text-charcoal/70">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-linen text-xs font-semibold text-charcoal">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-taupe/60 bg-white text-xs font-semibold text-apricot">
               {s.n}
             </span>
             {s.label}
