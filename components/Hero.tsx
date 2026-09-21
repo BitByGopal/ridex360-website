@@ -1,102 +1,108 @@
-import { ShieldCheck, Radar, Gauge } from "lucide-react";
+import Image from "next/image";
+import { Radar, Route, Bell } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section id="home" className="relative overflow-hidden">
-      <div className="container-px grid gap-16 pb-20 pt-16 sm:pt-24 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:pb-28">
+    <section
+      id="home"
+      className="relative min-h-[640px] overflow-hidden bg-white sm:min-h-[680px] lg:min-h-[740px]"
+    >
+      {/* Full-bleed visual, extends to the right edge of the viewport — not a boxed card */}
+      <div className="absolute right-0 top-0 z-0 hidden h-[640px] w-[64%] sm:h-[680px] lg:block lg:h-[740px]">
+        <Image
+          src="/images/hero-visual.png"
+          alt="RideX360 bus on the road with a phone showing live bus tracking — Bus 13, on route, next stop Green Park, ETA 5 minutes"
+          fill
+          priority
+          sizes="64vw"
+          className="object-cover object-[30%_center]"
+        />
+        {/* Soft white-to-transparent fade so the visual blends into the text area rather than ending in a hard edge */}
+        <div className="absolute inset-y-0 left-0 w-2/3 bg-gradient-to-r from-white via-white/80 to-transparent" />
+      </div>
+
+      {/* Translucent green 360°/route arcs, echoing the logo's motif */}
+      <svg
+        className="pointer-events-none absolute -right-24 -top-24 hidden h-[520px] w-[520px] lg:block"
+        viewBox="0 0 500 500"
+        aria-hidden="true"
+      >
+        <circle
+          cx="250"
+          cy="250"
+          r="230"
+          fill="none"
+          stroke="#087F5B"
+          strokeOpacity="0.12"
+          strokeWidth="26"
+          strokeDasharray="720 1500"
+        />
+        <circle
+          cx="250"
+          cy="250"
+          r="180"
+          fill="none"
+          stroke="#3FAF70"
+          strokeOpacity="0.14"
+          strokeWidth="18"
+          strokeDasharray="520 1200"
+          transform="rotate(40 250 250)"
+        />
+      </svg>
+
+      <div className="container-px relative z-10 grid gap-10 pb-24 pt-14 sm:pt-20 lg:grid-cols-[1fr_1.2fr] lg:items-center lg:pb-32">
         <div className="max-w-xl">
-          <h1 className="font-display text-4xl leading-[1.08] text-charcoal sm:text-5xl lg:text-6xl">
-            Intelligent transport.
+          <p className="text-xs font-semibold uppercase tracking-wider text-apricot">
+            Track &middot; Connect &middot; Move Safer
+          </p>
+
+          <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.08] text-charcoal sm:text-5xl lg:text-[3.4rem]">
+            Smarter Transportation
             <br />
-            Safer journeys.
-            <br />
-            Complete visibility.
+            for a{" "}
+            <span className="text-apricot">Safer Tomorrow</span>
           </h1>
 
           <p className="mt-6 max-w-md text-lg text-charcoal/70">
-            RideX360 brings organizations, drivers and passengers together
-            through one connected transportation platform — helping teams
-            manage journeys with greater visibility, safety and efficiency.
+            Real-time tracking, smart route management and seamless
+            communication — all in one platform. RideX360 keeps people,
+            vehicles and places always connected.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
             <a href="#demo" className="btn-primary">
-              Request a Demo
+              Get Started →
             </a>
             <a href="#platform" className="btn-secondary">
-              Explore Platform
+              Explore RideX360 →
             </a>
           </div>
 
           <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-charcoal/70">
             <li className="flex items-center gap-2">
-              <ShieldCheck size={16} className="text-apricot" /> Built for Safety
+              <Radar size={16} className="text-apricot" /> Live Tracking
             </li>
             <li className="flex items-center gap-2">
-              <Radar size={16} className="text-apricot" /> Real-time Visibility
+              <Route size={16} className="text-apricot" /> Smart Routes
             </li>
             <li className="flex items-center gap-2">
-              <Gauge size={16} className="text-apricot" /> Designed for Efficiency
+              <Bell size={16} className="text-apricot" /> Real-Time Alerts
             </li>
           </ul>
         </div>
 
-        <HeroVisual />
-      </div>
-    </section>
-  );
-}
-
-function HeroVisual() {
-  return (
-    <div className="relative mx-auto aspect-square w-full max-w-lg">
-      {/* Road / city backdrop */}
-      <div className="absolute inset-0 rounded-[2rem] bg-taupe/40" />
-      <svg
-        viewBox="0 0 400 400"
-        className="absolute inset-0 h-full w-full"
-        aria-hidden="true"
-      >
-        <path
-          d="M0 300 Q120 260 200 300 T400 290"
-          stroke="#B7694A"
-          strokeOpacity="0.25"
-          strokeWidth="18"
-          fill="none"
-        />
-        <rect x="30" y="40" width="60" height="90" rx="6" fill="#FFFFFF" opacity="0.6" />
-        <rect x="110" y="70" width="45" height="60" rx="6" fill="#FFFFFF" opacity="0.5" />
-        <rect x="300" y="50" width="55" height="80" rx="6" fill="#FFFFFF" opacity="0.5" />
-
-        {/* Bus */}
-        <g transform="translate(120,220)">
-          <rect x="0" y="0" width="150" height="60" rx="14" fill="#2E2521" />
-          <rect x="10" y="10" width="30" height="20" rx="3" fill="#F0EAE2" />
-          <rect x="48" y="10" width="30" height="20" rx="3" fill="#F0EAE2" />
-          <rect x="86" y="10" width="30" height="20" rx="3" fill="#F0EAE2" />
-          <circle cx="30" cy="65" r="12" fill="#2E2521" />
-          <circle cx="120" cy="65" r="12" fill="#2E2521" />
-          <circle cx="30" cy="65" r="5" fill="#F0EAE2" />
-          <circle cx="120" cy="65" r="5" fill="#F0EAE2" />
-        </g>
-      </svg>
-
-      {/* Dashboard card */}
-      <div className="absolute -left-4 bottom-6 w-56 rounded-xl border border-taupe/60 bg-white p-4 shadow-lg sm:-left-8">
-        <p className="text-xs text-charcoal/50">Organization Dashboard</p>
-        <p className="mt-1 font-display text-2xl text-charcoal">112</p>
-        <p className="text-xs text-charcoal/50">Active vehicles</p>
-        <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-taupe/50">
-          <div className="h-full w-4/5 rounded-full bg-apricot" />
+        {/* Mobile/tablet: the visual moves below the text as a normal contained image,
+            since the edge-bleed treatment only makes sense at full desktop width */}
+        <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl lg:hidden">
+          <Image
+            src="/images/hero-visual.png"
+            alt="RideX360 bus on the road with a phone showing live bus tracking — Bus 13, on route, next stop Green Park, ETA 5 minutes"
+            fill
+            sizes="100vw"
+            className="object-cover"
+          />
         </div>
       </div>
-
-      {/* Phone / live tracking card */}
-      <div className="absolute -right-2 top-6 w-40 rounded-xl border border-taupe/60 bg-white p-3 shadow-lg sm:-right-6">
-        <p className="text-[11px] text-charcoal/50">Bus 12 — Route A</p>
-        <p className="mt-1 font-display text-lg text-charcoal">7 min away</p>
-        <p className="text-[11px] text-apricot">Arrives 8:15 AM</p>
-      </div>
-    </div>
+    </section>
   );
 }

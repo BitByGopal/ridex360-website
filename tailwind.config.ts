@@ -8,16 +8,26 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        linen: "#F0EAE2",
+        // "linen" now serves as the site's light background token (was pale linen, now near-white / soft green)
+        linen: "#F7FBF9",
+        // "apricot" now serves as the primary brand accent (was terracotta, now RideX360 emerald green)
         apricot: {
-          DEFAULT: "#B7694A",
-          dark: "#9C5539",
+          DEFAULT: "#087F5B",
+          dark: "#07543F",
         },
-        charcoal: "#2E2521",
-        taupe: "#D8C8BC",
+        // "charcoal" now serves as the primary dark text/background token
+        charcoal: "#102027",
+        // "taupe" now serves as the subtle border/secondary-surface token
+        taupe: "#DDEBE4",
+        // New tokens matching the brand brief directly, for anything that wants them explicitly
+        brand: {
+          light: "#3FAF70",
+          accent: "#9BE44D",
+          soft: "#F0F9F4",
+        },
       },
       fontFamily: {
-        display: ["var(--font-fraunces)", "serif"],
+        display: ["var(--font-display)", "sans-serif"],
         sans: ["var(--font-inter)", "sans-serif"],
       },
       maxWidth: {

@@ -1,3 +1,6 @@
+import { Fragment } from "react";
+import { Building2, Car, Users, UserRound } from "lucide-react";
+
 const problems = [
   "Limited visibility into active vehicles",
   "Parents and passengers unsure when transportation will arrive",
@@ -9,13 +12,21 @@ const problems = [
   "Fragmented transportation information",
 ];
 
+const flowNodes = [
+  { icon: Building2, label: "Organization" },
+  { icon: Car, label: "Driver" },
+  { icon: Users, label: "Passenger" },
+  { icon: UserRound, label: "Parent" },
+];
+
 export default function ProblemSection() {
   return (
     <section className="section container-px">
       <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <div>
-          <h2 className="font-display text-3xl leading-tight text-charcoal sm:text-4xl">
-            Transportation shouldn&apos;t depend on phone calls and guesswork.
+          <h2 className="font-display text-3xl font-extrabold leading-tight text-charcoal sm:text-4xl">
+            Transportation shouldn&apos;t depend on phone calls and
+            guesswork.
           </h2>
           <p className="mt-5 max-w-md text-charcoal/70">
             Many organizations run transportation through scattered phone
@@ -31,7 +42,7 @@ export default function ProblemSection() {
           {problems.map((p) => (
             <li
               key={p}
-              className="rounded-xl border border-taupe/60 bg-white/60 p-4 text-sm text-charcoal/80"
+              className="rounded-xl border border-taupe bg-white p-4 text-sm text-charcoal/80"
             >
               {p}
             </li>
@@ -39,7 +50,7 @@ export default function ProblemSection() {
         </ul>
       </div>
 
-      <p className="mt-14 font-display text-2xl text-apricot">
+      <p className="mt-14 font-display text-2xl font-bold text-apricot">
         RideX360 connects the entire journey.
       </p>
     </section>
@@ -48,28 +59,25 @@ export default function ProblemSection() {
 
 function FragmentedFlow() {
   return (
-    <div className="mt-10 flex flex-col gap-2 text-sm text-charcoal/60">
-      <FlowNode label="Organization" />
-      <FlowArrow />
-      <FlowNode label="Driver" />
-      <FlowArrow bidirectional />
-      <FlowNode label="Passenger" />
-      <FlowArrow bidirectional />
-      <FlowNode label="Parent" />
+    <div className="mt-8 rounded-2xl border border-taupe bg-white p-5">
+      <div className="flex flex-wrap items-center gap-2">
+        {flowNodes.map(({ icon: Icon, label }, i) => (
+          <Fragment key={label}>
+            <div className="flex items-center gap-2 rounded-full border border-taupe bg-brand-soft px-3 py-1.5 text-sm font-medium text-charcoal">
+              <Icon size={14} className="text-apricot" />
+              {label}
+            </div>
+            {i < flowNodes.length - 1 && (
+              <span className="text-sm text-apricot/50" aria-hidden="true">
+                {i === 0 ? "→" : "↔"}
+              </span>
+            )}
+          </Fragment>
+        ))}
+      </div>
+      <p className="mt-3 text-xs text-charcoal/50">
+        Today, each connection usually means a separate phone call.
+      </p>
     </div>
-  );
-}
-
-function FlowNode({ label }: { label: string }) {
-  return (
-    <div className="w-fit rounded-full border border-charcoal/15 bg-white px-4 py-1.5">
-      {label}
-    </div>
-  );
-}
-
-function FlowArrow({ bidirectional }: { bidirectional?: boolean }) {
-  return (
-    <div className="pl-6 text-charcoal/30">{bidirectional ? "↕" : "↓"}</div>
   );
 }

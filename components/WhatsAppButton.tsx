@@ -1,5 +1,6 @@
 const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "917075810619";
-const DEFAULT_MESSAGE = "Hi RideX360, I'm exploring transportation management solutions for my organization and would like to learn more about your platform's features and pricing.";
+const DEFAULT_MESSAGE =
+  "Hi RideX360, I'm exploring transportation management solutions for my organization and would like to learn more about your platform's features and pricing.";
 
 export default function WhatsAppButton() {
   const href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(

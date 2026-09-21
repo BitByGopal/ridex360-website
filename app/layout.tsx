@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import "./globals.css";
 
-const fraunces = Fraunces({
+const displayFont = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-fraunces",
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
+  variable: "--font-display",
+  weight: ["600", "700", "800"],
 });
 
 const inter = Inter({
@@ -34,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
+    <html lang="en" className={`${displayFont.variable} ${inter.variable}`}>
       <body className="font-sans antialiased">
         {children}
         <WhatsAppButton />
