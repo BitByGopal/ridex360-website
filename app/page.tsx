@@ -2,13 +2,11 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import FeatureStrip from "@/components/FeatureStrip";
 import ProblemSection from "@/components/ProblemSection";
-import SolutionSection from "@/components/SolutionSection";
+import PlatformTabs from "@/components/PlatformTabs";
 import LiveTrackingSection from "@/components/LiveTrackingSection";
 import FeatureSlideshow from "@/components/FeatureSlideshow";
 import SmartRoutingSection from "@/components/SmartRoutingSection";
 import Industries from "@/components/Industries";
-import PlatformEcosystem from "@/components/PlatformEcosystem";
-import DashboardsSection from "@/components/DashboardsSection";
 import Features from "@/components/Features";
 import SafetySection from "@/components/SafetySection";
 import WhyRideX360Section from "@/components/WhyRideX360Section";
@@ -27,13 +25,11 @@ export default function Home() {
       <Hero />
       <FeatureStrip />
       <ProblemSection />
-      <SolutionSection />
+      <PlatformTabs />
       <LiveTrackingSection />
       <FeatureSlideshow />
       <SmartRoutingSection />
       <Industries />
-      <PlatformEcosystem />
-      <DashboardsSection />
       <Features />
       <SafetySection />
       <WhyRideX360Section />

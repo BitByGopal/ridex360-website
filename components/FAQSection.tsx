@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, MapPin } from "lucide-react";
 
 const faqs = [
   {
@@ -35,40 +35,78 @@ export default function FAQSection() {
 
   return (
     <section className="section container-px" aria-label="Frequently asked questions">
-      <div className="max-w-xl">
-        <p className="eyebrow">FAQ</p>
-        <h2 className="mt-3 font-display text-3xl leading-tight text-charcoal sm:text-4xl">
-          Questions organizations ask us.
-        </h2>
-      </div>
+      <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:gap-16">
+        {/* Left: heading + small visual */}
+        <div>
+          <p className="eyebrow">FAQ</p>
+          <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight text-charcoal sm:text-4xl">
+            Questions organizations ask us.
+          </h2>
+          <p className="mt-4 max-w-sm text-charcoal/70">
+            Everything you need to know before bringing RideX360 to your
+            organization.
+          </p>
 
-      <div className="mx-auto mt-10 max-w-2xl divide-y divide-taupe/60 rounded-2xl border border-taupe/60 bg-white">
-        {faqs.map((item, i) => {
-          const isOpen = open === i;
-          return (
-            <div key={item.q}>
-              <button
-                type="button"
-                onClick={() => setOpen(isOpen ? null : i)}
-                aria-expanded={isOpen}
-                className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
-              >
-                <span className="font-medium text-charcoal">{item.q}</span>
-                <ChevronDown
-                  size={18}
-                  className={`shrink-0 text-apricot transition-transform ${
-                    isOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-              {isOpen && (
-                <div className="px-5 pb-4 text-sm text-charcoal/70">
-                  {item.a}
-                </div>
-              )}
-            </div>
-          );
-        })}
+          <div className="relative mt-8 hidden aspect-[4/3] max-w-xs overflow-hidden rounded-2xl border border-taupe bg-brand-soft/40 sm:block">
+            <svg
+              viewBox="0 0 320 240"
+              className="h-full w-full"
+              aria-hidden="true"
+            >
+              <circle
+                cx="160"
+                cy="120"
+                r="100"
+                fill="none"
+                stroke="#087F5B"
+                strokeOpacity="0.15"
+                strokeWidth="18"
+                strokeDasharray="260 400"
+              />
+              <path
+                d="M60 170 C 110 160 120 110 170 100 S 240 70 250 40"
+                stroke="#087F5B"
+                strokeOpacity="0.4"
+                strokeWidth="4"
+                fill="none"
+                strokeLinecap="round"
+              />
+            </svg>
+            <span className="absolute left-1/2 top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-apricot shadow-sm">
+              <MapPin size={22} strokeWidth={1.75} />
+            </span>
+          </div>
+        </div>
+
+        {/* Right: accordion */}
+        <div className="divide-y divide-taupe rounded-2xl border border-taupe bg-white">
+          {faqs.map((item, i) => {
+            const isOpen = open === i;
+            return (
+              <div key={item.q}>
+                <button
+                  type="button"
+                  onClick={() => setOpen(isOpen ? null : i)}
+                  aria-expanded={isOpen}
+                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+                >
+                  <span className="font-medium text-charcoal">{item.q}</span>
+                  <ChevronDown
+                    size={18}
+                    className={`shrink-0 text-apricot transition-transform ${
+                      isOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {isOpen && (
+                  <div className="px-5 pb-4 text-sm text-charcoal/70">
+                    {item.a}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
